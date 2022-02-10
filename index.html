@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+
+ Author: Simeon Ngalamou
+
+ Class:  Software Engineering
+
+ Project: Lab 2 / Dice Roller
+
+ Description: This is the final version of my Dice Roller application and is being submitted as part of Lab 2.
+
+-->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>Dice Roller</title>
+        <style>
+        h1 {font-family: Courier, Verdana, sans-serif;
+            text-align: center;
+            font-size: 24px; 
+            padding: 20px; }
+        button {background-color: rgb(68, 137, 228);
+            border-radius: 60px;
+            border: none;
+            color: rgb(255, 255, 255);
+            padding: 4px;
+            text-transform: uppercase;
+            width: 75px;}
+        h2 {font-size: 18px; 
+            padding: 6px; }
+        p {padding: 10px; }
+          </style>
+          <script>
+            function initApplication() {diceRoll()}
+            function printNumber(number) { // Replaces a value in the html to show the client the results of :rolling the dice 
+                var placeholder = document.getElementById('placeholder');
+                placeholder.innerHTML = number;
+            }
+
+            function diceRoll() {  //rolls the the dice
+                var dice = {  // Sets up the "dice" 
+                    sides: 6, // Sets the diceattribute of the dice to have 6 sides
+                    roll: function () {  // "Rolls" the dice by choosing a random number from 1-6 
+                        var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+                        return randomNumber;
+                    }
+                }
+                var result = dice.roll();
+                printNumber(result);
+            }
+          </script> 
+    </head>
+    <body onload="initApplication()">
+        <h1>Welcome to the Dice Roller Game!</h1>  
+        <br>   
+        <h2>Instructions:</h2>   
+        <p>Click the "Roll Dice" Button or Press Enter to Roll the Dice</p>  
+        <h2> Your dice roll: <p id="placeholder"></h2> 
+        <p></p> 
+        <button type="button"  onclick="diceRoll()">Roll</button>
+    </body>
+</html>
